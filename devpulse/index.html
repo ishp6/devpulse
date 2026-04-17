@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevPulse — AI Code Review</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div id="dp">
+    <div class="dp-top">
+      <div class="dp-logo">
+        <div class="dp-logo-dot"></div>
+        DevPulse
+      </div>
+      <span class="dp-badge">AI Code Review</span>
+    </div>
+
+    <div class="dp-row">
+      <!-- Left: Editor -->
+      <div class="dp-left">
+        <div class="dp-toolbar">
+          <label for="lang">Language</label>
+          <select id="lang">
+            <option>Python</option>
+            <option>Java</option>
+            <option>JavaScript</option>
+            <option>TypeScript</option>
+            <option>C++</option>
+            <option>SQL</option>
+          </select>
+        </div>
+        <textarea id="code" placeholder="Paste your code here...&#10;&#10;DevPulse will check for bugs, style issues,&#10;performance problems, and suggest what to learn next."></textarea>
+        <div class="dp-chips">
+          <span class="dp-chips-label">examples →</span>
+          <span class="dp-chip" onclick="load('bubble')">bubble sort</span>
+          <span class="dp-chip" onclick="load('api')">async fetch</span>
+          <span class="dp-chip" onclick="load('thread')">Java thread</span>
+          <span class="dp-chip" onclick="load('sql')">SQL query</span>
+        </div>
+      </div>
+
+      <!-- Right: Results -->
+      <div class="dp-right">
+        <div class="dp-right-header">Analysis panel</div>
+        <div class="dp-result" id="result">
+          <p class="dp-placeholder">Paste your code on the left, pick a language, then click <strong>Review my code</strong>.</p>
+          <p class="dp-placeholder" style="margin-top:10px;">Results will appear here — score, issues, and what to learn next.</p>
+        </div>
+        <div class="dp-btn-row">
+          <button class="dp-submit" onclick="review()">Review my code</button>
+          <div class="dp-status" id="status"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Result Card Template (hidden, cloned by JS) -->
+  <template id="result-template">
+    <div class="result-card">
+      <div class="rc-header">
+        <div class="rc-score-wrap">
+          <span class="rc-score" id="rc-score">—</span>
+          <span class="rc-score-label">/ 100</span>
+        </div>
+        <span class="rc-skill" id="rc-skill"></span>
+      </div>
+      <div class="rc-bars" id="rc-bars"></div>
+      <div class="rc-issues" id="rc-issues"></div>
+      <div class="rc-learn" id="rc-learn"></div>
+    </div>
+  </template>
+
+  <script src="examples.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
